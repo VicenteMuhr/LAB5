@@ -172,8 +172,8 @@ public class Main{
             size = 0;
         }
         private int hash(Key key){
-            return(key.hashCode() & 0x7fffffff) % st.length;
-        }//0x7fffffff se usa para asegurar que key.hashCode siempre devuelva positivo.
+            return(key.hashCode() & Integer.MAX_VALUE) % st.length;
+        }
         public void put(Key key, Value value){
             int i = hash(key);
             for(Entry<Key, Value> entry : st[i]){
@@ -491,7 +491,7 @@ public class Main{
                         + pA.getWins() + ", Empates= " + pA.getDraws()
                         + ", Derrotas = " + pA.getLosses() + ", Tasa de victorias= "
                         + String.format("%.2f", pA.winRate() * 100) + "%");
-            }//"%.2f" "%" para que sea vea más ordenado.
+            }//"%.2f" es una manera de formatear el % de victorias con 2 decimales.
             Player pB = playersHashST.get(playerB);
             if(pB != null){
                 System.out.println(pB.getPlayerName() + ": Victorias = "
